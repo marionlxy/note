@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!-- saved from url=(0092)https://elastalert.readthedocs.io/en/latest/running_elastalert.html#setting-up-elasticsearch -->
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths translated-ltr" lang="zh-CN" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>首次运行ElastAlert — ElastAlert 0.0.1文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script async="" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/analytics.js.下载"></script><script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/modernizr.min.js.下载"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/documentation_options.js.下载"></script>
+        <script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/jquery.js.下载"></script>
+        <script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/underscore.js.下载"></script>
+        <script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/doctools.js.下载"></script>
+        <script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/language_data.js.下载"></script>
+        <script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/readthedocs-doc-embed.js.下载"></script>
+    
+    <script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/theme.js.下载"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/theme.css" type="text/css">
+  <link rel="stylesheet" href="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/pygments.css" type="text/css">
+    <link rel="index" title="指数" href="https://elastalert.readthedocs.io/en/latest/genindex.html">
+    <link rel="search" title="搜索" href="https://elastalert.readthedocs.io/en/latest/search.html">
+    <link rel="next" title="规则类型和配置选项" href="https://elastalert.readthedocs.io/en/latest/ruletypes.html">
+    <link rel="prev" title="ElastAlert-使用Elasticsearch轻松灵活地发出警报" href="https://elastalert.readthedocs.io/en/latest/elastalert.html"> 
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html">
+
+<link rel="stylesheet" href="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/readthedocs-data.js.下载"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = "running_elastalert"
+READTHEDOCS_DATA['source_suffix'] = ".rst"
+</script>
+
+<script type="text/javascript" src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/readthedocs-analytics.js.下载"></script>
+
+<!-- end RTD <extrahead> -->
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/translateelement.css"></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://elastalert.readthedocs.io/en/latest/index.html" class="icon icon-home"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> ElastAlert
+          
+
+          
+          </font></font></a>
+
+          
+            
+            
+            
+              <div class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                最新
+              </font></font></div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://elastalert.readthedocs.io/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="主导航">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/elastalert.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ElastAlert-使用Elasticsearch轻松灵活地发出警报</font></font></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#"><span class="toctree-expand"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首次运行ElastAlert</font></font></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#requirements"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要求</font></font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#downloading-and-configuring"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下载和配置</font></font></a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#setting-up-elasticsearch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置Elasticsearch</font></font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#creating-a-rule"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">建立规则</font></font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#testing-your-rule"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">测试您的规则</font></font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#running-elastalert"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行ElastAlert</font></font></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/ruletypes.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则类型和配置选项</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/elastalert_status.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ElastAlert元数据索引</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/adding_rules.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加新的规则类型</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/adding_alerts.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加新的警报器</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/writing_filters.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为规则编写过滤器</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/adding_enhancements.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">增强功能</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/adding_loaders.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则加载器</font></font></a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/signing_requests.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">签署对Amazon Elasticsearch Service的请求</font></font></a></li>
+</ul>
+
+            
+          
+        </div>
+      <div id="rtd-8qro25ic" class="ethical-rtd ethical-dark-theme"><div class="ethical-sidebar"><div class="ethical-content"><a href="https://readthedocs.org/sustainability/click/305/DRgNwLwBq2CQ/" rel="nofollow" target="_blank" class="ethical-image-link"><img src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/readthedocs-logo-fs8.png"></a><div class="ethical-text"><a href="https://readthedocs.org/sustainability/click/305/DRgNwLwBq2CQ/" rel="nofollow" target="_blank"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">私人存储库和优先级支持</font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">尝试阅读《今日商业文档》！</font></font></a></div></div><div class="ethical-callout"><small><em><a href="https://readthedocs.org/sustainability/advertising/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">赞助</font></font></a><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">· </font></font></span><a href="https://docs.readthedocs.io/en/latest/ethical-advertising.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">广告以道德的方式投放</font></font></a></em></small></div></div><img src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/saved_resource" style="display: none;"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="顶部导航">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://elastalert.readthedocs.io/en/latest/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ElastAlert</font></font></a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="面包屑导航">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://elastalert.readthedocs.io/en/latest/index.html"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">文件</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> »</font></font></li>
+        
+      <li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首次运行ElastAlert</font></font></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/Yelp/elastalert/blob/master/docs/source/running_elastalert.rst" class="fa fa-github"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 在GitHub上编辑</font></font></a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-elastalert-for-the-first-time">
+<span id="tutorial"></span><h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">运行ElastAlert初次</font></font><a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#running-elastalert-for-the-first-time" title="固定到该标题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h1>
+<div class="section" id="requirements">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">要求</font></font><a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#requirements" title="固定到该标题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<ul class="simple">
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">弹性搜索</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ISO8601或Unix带时间戳的数据</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Python 3.6</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">点，请参阅requirements.txt</font></font></li>
+<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubuntu 14.x上的软件包：python-pip python-dev libffi-dev libssl-dev</font></font></li>
+</ul>
+</div>
+<div class="section" id="downloading-and-configuring">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下载和配置</font></font><a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#downloading-and-configuring" title="固定到该标题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<p>You can either install the latest released version of ElastAlert using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install elastalert
+</pre></div>
+</div>
+<p>or you can clone the ElastAlert repository for the most recent changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/Yelp/elastalert.git
+</pre></div>
+</div>
+<p>Install the module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install "setuptools&gt;=11.3"
+$ python setup.py install
+</pre></div>
+</div>
+<p>Depending on the version of Elasticsearch, you may need to manually install the correct version of elasticsearch-py.</p>
+<p>Elasticsearch 5.0+:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install "elasticsearch&gt;=5.0.0"
+</pre></div>
+</div>
+<p>Elasticsearch 2.X:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install "elasticsearch&lt;3.0.0"
+</pre></div>
+</div>
+<p>Next, open up config.yaml.example. In it, you will find several configuration options. ElastAlert may be run without changing any of these settings.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rules_folder</span></code> is where ElastAlert will load rule configuration files from. It will attempt to load every .yaml file in the folder. Without any valid rules, ElastAlert will not start. ElastAlert will also load new rules, stop running missing rules, and restart modified rules as the files in this folder change. For this tutorial, we will use the example_rules folder.</p>
+<p><code class="docutils literal notranslate"><span class="pre">run_every</span></code> is how often ElastAlert will query Elasticsearch.</p>
+<p><code class="docutils literal notranslate"><span class="pre">buffer_time</span></code> is the size of the query window, stretching backwards from the time each query is run. This value is ignored for rules where <code class="docutils literal notranslate"><span class="pre">use_count_query</span></code> or <code class="docutils literal notranslate"><span class="pre">use_terms_query</span></code> is set to true.</p>
+<p><code class="docutils literal notranslate"><span class="pre">es_host</span></code> is the address of an Elasticsearch cluster where ElastAlert will store data about its state, queries run, alerts, and errors. Each rule may also use a different Elasticsearch host to query against.</p>
+<p><code class="docutils literal notranslate"><span class="pre">es_port</span></code> is the port corresponding to <code class="docutils literal notranslate"><span class="pre">es_host</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">use_ssl</span></code>: Optional; whether or not to connect to <code class="docutils literal notranslate"><span class="pre">es_host</span></code> using TLS; set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">verify_certs</span></code>: Optional; whether or not to verify TLS certificates; set to <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. The default is <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">client_cert</span></code>: Optional; path to a PEM certificate to use as the client certificate</p>
+<p><code class="docutils literal notranslate"><span class="pre">client_key</span></code>: Optional; path to a private key file to use as the client key</p>
+<p><code class="docutils literal notranslate"><span class="pre">ca_certs</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： 可选的; </font><font style="vertical-align: inherit;">用于验证SSL连接的CA证书捆绑包的路径</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">es_username</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： 可选的; </font><font style="vertical-align: inherit;">用于连接的basic-auth用户名</font></font><code class="docutils literal notranslate"><span class="pre">es_host</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">es_password</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： 可选的; </font><font style="vertical-align: inherit;">用于连接的basic-auth密码</font></font><code class="docutils literal notranslate"><span class="pre">es_host</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">es_url_prefix</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： 可选的; </font><font style="vertical-align: inherit;">Elasticsearch端点的URL前缀。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">es_send_get_body_as</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">： 可选的; </font><font style="vertical-align: inherit;">方法查询Elasticsearch - </font></font><code class="docutils literal notranslate"><span class="pre">GET</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">，</font></font><code class="docutils literal notranslate"><span class="pre">POST</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">或</font></font><code class="docutils literal notranslate"><span class="pre">source</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">默认是</font></font><code class="docutils literal notranslate"><span class="pre">GET</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">writeback_index</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是ElastAlert将在其中存储数据的索引的名称。</font><font style="vertical-align: inherit;">我们稍后将创建此索引。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">alert_time_limit</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 是失败警报的重试窗口。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">将文件另存为 </font></font><code class="docutils literal notranslate"><span class="pre">config.yaml</span></code></p>
+</div>
+<div class="section" id="setting-up-elasticsearch">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">设置Elasticsearch </font></font><a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#setting-up-elasticsearch" title="固定到该标题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ElastAlert将有关其查询和警报的信息和元数据保存回Elasticsearch。</font><font style="vertical-align: inherit;">这对于审核和调试很有用，它使ElastAlert可以重新启动并完全从中断处恢复。</font><font style="vertical-align: inherit;">ElastAlert不需要运行，但强烈建议使用。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首先，我们需要通过运行</font></font><code class="docutils literal notranslate"><span class="pre">elastalert-create-index</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并遵循以下说明</font><font style="vertical-align: inherit;">为ElastAlert创建要写入的索引</font><font style="vertical-align: inherit;">：</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elastalert-create-index
+New index name (Default elastalert_status)
+Name of existing index to copy (Default None)
+New index elastalert_status created
+Done!
+</pre></div>
+</div>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">有关此处将包含哪些数据的信息，请参阅</font></font><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/elastalert_status.html#metadata"><span class="std std-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ElastAlert元数据索引</font></font></span></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+</div>
+<div class="section" id="creating-a-rule">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建规则</font></font><a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#creating-a-rule" title="固定到该标题"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¶</font></font></a></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">每个规则都定义要执行的查询，触发匹配的参数以及每个匹配要触发的警报列表。</font><font style="vertical-align: inherit;">我们将使用它</font></font><code class="docutils literal notranslate"><span class="pre">example_rules/example_frequency.yaml</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">作为模板：</font></font></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># From example_rules/example_frequency.yaml</span>
+<span class="n">es_host</span><span class="p">:</span> <span class="n">elasticsearch</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">es_port</span><span class="p">:</span> <span class="mi">14900</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">Example</span> <span class="n">rule</span>
+<span class="nb">type</span><span class="p">:</span> <span class="n">frequency</span>
+<span class="n">index</span><span class="p">:</span> <span class="n">logstash</span><span class="o">-*</span>
+<span class="n">num_events</span><span class="p">:</span> <span class="mi">50</span>
+<span class="n">timeframe</span><span class="p">:</span>
+    <span class="n">hours</span><span class="p">:</span> <span class="mi">4</span>
+<span class="nb">filter</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">term</span><span class="p">:</span>
+    <span class="n">some_field</span><span class="p">:</span> <span class="s2">"some_value"</span>
+<span class="n">alert</span><span class="p">:</span>
+<span class="o">-</span> <span class="s2">"email"</span>
+<span class="n">email</span><span class="p">:</span>
+<span class="o">-</span> <span class="s2">"elastalert@example.com"</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">es_host</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">并</font></font><code class="docutils literal notranslate"><span class="pre">es_port</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">应指向我们要查询的Elasticsearch集群。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是此规则的唯一名称。</font><font style="vertical-align: inherit;">如果两个规则共享相同的名称，则ElastAlert将不会启动。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：每个规则具有不同的类型，可能采用不同的参数。</font><font style="vertical-align: inherit;">该</font></font><code class="docutils literal notranslate"><span class="pre">frequency</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类型的意思是“当</font></font><code class="docutils literal notranslate"><span class="pre">num_events</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">出现</font><font style="vertical-align: inherit;">多个警报时发出警报</font></font><code class="docutils literal notranslate"><span class="pre">timeframe</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。”有关其他类型的信息，请参阅</font></font><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/ruletypes.html#ruletypes"><span class="std std-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">规则类型</font></font></span></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">index</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：要查询的索引的名称。</font><font style="vertical-align: inherit;">如果您使用的是Logstash，则默认情况下索引将匹配</font></font><code class="docutils literal notranslate"><span class="pre">"logstash-*"</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">num_events</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">：此参数特定于</font></font><code class="docutils literal notranslate"><span class="pre">frequency</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">类型，并且是触发警报时的阈值。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">timeframe</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是</font></font><code class="docutils literal notranslate"><span class="pre">num_events</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">必须发生</font><font style="vertical-align: inherit;">的时间段</font><font style="vertical-align: inherit;">。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">filter</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是用于过滤结果的Elasticsearch过滤器列表。</font><font style="vertical-align: inherit;">在这里，我们为具有</font></font><code class="docutils literal notranslate"><span class="pre">some_field</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">match的</font><font style="vertical-align: inherit;">文档提供了一个单项过滤器</font></font><code class="docutils literal notranslate"><span class="pre">some_value</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">有关</font><font style="vertical-align: inherit;">更多信息，</font><font style="vertical-align: inherit;">请参见</font></font><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/recipes/writing_filters.html#writingfilters"><span class="std std-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">为规则编写过滤器</font></font></span></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">如果不需要过滤器，则应将其指定为空列表：</font></font><code class="docutils literal notranslate"><span class="pre">filter:</span> <span class="pre">[]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">alert</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">是在每次比赛中运行的警报的列表。</font><font style="vertical-align: inherit;">有关警报类型的更多信息，请参阅</font></font><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/ruletypes.html#alerts"><span class="std std-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">警报</font></font></span></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font><font style="vertical-align: inherit;">电子邮件警报要求使用SMTP服务器发送邮件。</font><font style="vertical-align: inherit;">默认情况下，它将尝试使用localhost。</font><font style="vertical-align: inherit;">可以使用该</font></font><code class="docutils literal notranslate"><span class="pre">smtp_host</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选项</font><font style="vertical-align: inherit;">进行更改</font><font style="vertical-align: inherit;">。</font></font></p>
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 是警报将发送到的地址列表。</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">还有许多其他可选的配置选项，请参阅“ </font></font><a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/ruletypes.html#commonconfig"><span class="std std-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">常见配置选项”</font></font></span></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">。</font></font></p>
+<p>All documents must have a timestamp field. ElastAlert will try to use <code class="docutils literal notranslate"><span class="pre">@timestamp</span></code> by default, but this can be changed with the <code class="docutils literal notranslate"><span class="pre">timestamp_field</span></code> option. By default, ElastAlert uses ISO8601 timestamps, though unix timestamps are supported by setting <code class="docutils literal notranslate"><span class="pre">timestamp_type</span></code>.</p>
+<p>As is, this rule means “Send an email to <a class="reference external" href="mailto:elastalert%40example.com">elastalert<span>@</span>example<span>.</span>com</a> when there are more than 50 documents with <code class="docutils literal notranslate"><span class="pre">some_field</span> <span class="pre">==</span> <span class="pre">some_value</span></code> within a 4 hour period.”</p>
+</div>
+<div class="section" id="testing-your-rule">
+<h2>Testing Your Rule<a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#testing-your-rule" title="固定到该标题">¶</a></h2>
+<p>Running the <code class="docutils literal notranslate"><span class="pre">elastalert-test-rule</span></code> tool will test that your config file successfully loads and run it in debug mode over the last 24 hours:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elastalert-test-rule example_rules/example_frequency.yaml
+</pre></div>
+</div>
+<p>If you want to specify a configuration file to use, you can run it with the config flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ elastalert-test-rule --config &lt;path-to-config-file&gt; example_rules/example_frequency.yaml
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>The configuration preferences will be loaded as follows:</dt>
+<dd><ol class="first last arabic simple">
+<li>Configurations specified in the yaml file.</li>
+<li>Configurations specified in the config file, if specified.</li>
+<li>Default configurations, for the tool to run.</li>
+</ol>
+</dd>
+</dl>
+<p>See <a class="reference internal" href="https://elastalert.readthedocs.io/en/latest/ruletypes.html#testing"><span class="std std-ref">the testing section for more details</span></a></p>
+</div>
+<div class="section" id="running-elastalert">
+<h2>Running ElastAlert<a class="headerlink" href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html#running-elastalert" title="固定到该标题">¶</a></h2>
+<p>There are two ways of invoking ElastAlert. As a daemon, through Supervisor (<a class="reference external" href="http://supervisord.org/">http://supervisord.org/</a>), or directly with Python. For easier debugging purposes in this tutorial, we will invoke it directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m elastalert.elastalert --verbose --rule example_frequency.yaml  # or use the entry point: elastalert --verbose --rule ...
+No handlers could be found for logger "Elasticsearch"
+INFO:root:Queried rule Example rule from 1-15 14:22 PST to 1-15 15:07 PST: 5 hits
+INFO:Elasticsearch:POST http://elasticsearch.example.com:14900/elastalert_status/elastalert_status?op_type=create [status:201 request:0.025s]
+INFO:root:Ran Example rule from 1-15 14:22 PST to 1-15 15:07 PST: 5 query hits (0 already seen), 0 matches, 0 alerts sent
+INFO:root:Sleeping for 297 seconds
+</pre></div>
+</div>
+<p>ElastAlert uses the python logging system and <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> sets it to display INFO level messages. <code class="docutils literal notranslate"><span class="pre">--rule</span> <span class="pre">example_frequency.yaml</span></code> specifies the rule to run, otherwise ElastAlert will attempt to load the other rules in the example_rules folder.</p>
+<p>Let’s break down the response to see what’s happening.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Queried</span> <span class="pre">rule</span> <span class="pre">Example</span> <span class="pre">rule</span> <span class="pre">from</span> <span class="pre">1-15</span> <span class="pre">14:22</span> <span class="pre">PST</span> <span class="pre">to</span> <span class="pre">1-15</span> <span class="pre">15:07</span> <span class="pre">PST:</span> <span class="pre">5</span> <span class="pre">hits</span></code></p>
+<p>ElastAlert periodically queries the most recent <code class="docutils literal notranslate"><span class="pre">buffer_time</span></code> (default 45 minutes) for data matching the filters. Here we see that it matched 5 hits.</p>
+<p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">http://elasticsearch.example.com:14900/elastalert_status/elastalert_status?op_type=create</span> <span class="pre">[status:201</span> <span class="pre">request:0.025s]</span></code></p>
+<p>This line showing that ElastAlert uploaded a document to the elastalert_status index with information about the query it just made.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Ran</span> <span class="pre">Example</span> <span class="pre">rule</span> <span class="pre">from</span> <span class="pre">1-15</span> <span class="pre">14:22</span> <span class="pre">PST</span> <span class="pre">to</span> <span class="pre">1-15</span> <span class="pre">15:07</span> <span class="pre">PST:</span> <span class="pre">5</span> <span class="pre">query</span> <span class="pre">hits</span> <span class="pre">(0</span> <span class="pre">already</span> <span class="pre">seen),</span> <span class="pre">0</span> <span class="pre">matches,</span> <span class="pre">0</span> <span class="pre">alerts</span> <span class="pre">sent</span></code></p>
+<p>The line means ElastAlert has finished processing the rule. For large time periods, sometimes multiple queries may be run, but their data will be processed together. <code class="docutils literal notranslate"><span class="pre">query</span> <span class="pre">hits</span></code> is the number of documents that are downloaded from Elasticsearch, <code class="docutils literal notranslate"><span class="pre">already</span> <span class="pre">seen</span></code> refers to documents that were already counted in a previous overlapping query and will be ignored, <code class="docutils literal notranslate"><span class="pre">matches</span></code> is the number of matches the rule type outputted, and <code class="docutils literal notranslate"><span class="pre">alerts</span> <span class="pre">sent</span></code> is the number of alerts actually sent. This may differ from <code class="docutils literal notranslate"><span class="pre">matches</span></code> because of options like <code class="docutils literal notranslate"><span class="pre">realert</span></code> and <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> or because of an error.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Sleeping</span> <span class="pre">for</span> <span class="pre">297</span> <span class="pre">seconds</span></code></p>
+<p>The default <code class="docutils literal notranslate"><span class="pre">run_every</span></code> is 5 minutes, meaning ElastAlert will sleep until 5 minutes have elapsed from the last cycle before running queries for each rule again with time ranges shifted forward 5 minutes.</p>
+<p>Say, over the next 297 seconds, 46 more matching documents were added to Elasticsearch:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INFO</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Queried</span> <span class="n">rule</span> <span class="n">Example</span> <span class="n">rule</span> <span class="kn">from</span> <span class="mi">1</span><span class="o">-</span><span class="mi">15</span> <span class="mi">14</span><span class="p">:</span><span class="mi">27</span> <span class="n">PST</span> <span class="n">to</span> <span class="mi">1</span><span class="o">-</span><span class="mi">15</span> <span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="n">PST</span><span class="p">:</span> <span class="mi">51</span> <span class="n">hits</span>
+<span class="o">...</span>
+<span class="n">INFO</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Sent</span> <span class="n">email</span> <span class="n">to</span> <span class="p">[</span><span class="s1">'elastalert@example.com'</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="n">INFO</span><span class="p">:</span><span class="n">root</span><span class="p">:</span><span class="n">Ran</span> <span class="n">Example</span> <span class="n">rule</span> <span class="kn">from</span> <span class="mi">1</span><span class="o">-</span><span class="mi">15</span> <span class="mi">14</span><span class="p">:</span><span class="mi">27</span> <span class="n">PST</span> <span class="n">to</span> <span class="mi">1</span><span class="o">-</span><span class="mi">15</span> <span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="n">PST</span><span class="p">:</span> <span class="mi">51</span> <span class="n">query</span> <span class="n">hits</span><span class="p">,</span> <span class="mi">1</span> <span class="n">matches</span><span class="p">,</span> <span class="mi">1</span> <span class="n">alerts</span> <span class="n">sent</span>
+</pre></div>
+</div>
+<p>The body of the email will contain something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Example</span> <span class="n">rule</span>
+
+<span class="n">At</span> <span class="n">least</span> <span class="mi">50</span> <span class="n">events</span> <span class="n">occurred</span> <span class="n">between</span> <span class="mi">1</span><span class="o">-</span><span class="mi">15</span> <span class="mi">11</span><span class="p">:</span><span class="mi">12</span> <span class="n">PST</span> <span class="ow">and</span> <span class="mi">1</span><span class="o">-</span><span class="mi">15</span> <span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="n">PST</span>
+
+<span class="nd">@timestamp</span><span class="p">:</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">15</span><span class="n">T15</span><span class="p">:</span><span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="o">-</span><span class="mi">08</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>If an error occurred, such as an unreachable SMTP server, you may see:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ERROR:root:Error</span> <span class="pre">while</span> <span class="pre">running</span> <span class="pre">alert</span> <span class="pre">email:</span> <span class="pre">Error</span> <span class="pre">connecting</span> <span class="pre">to</span> <span class="pre">SMTP</span> <span class="pre">host:</span> <span class="pre">[Errno</span> <span class="pre">61]</span> <span class="pre">Connection</span> <span class="pre">refused</span></code></p>
+<p>Note that if you stop ElastAlert and then run it again later, it will look up <code class="docutils literal notranslate"><span class="pre">elastalert_status</span></code> and begin querying
+at the end time of the last query. This is to prevent duplication or skipping of alerts if ElastAlert is restarted.</p>
+<p>By using the <code class="docutils literal notranslate"><span class="pre">--debug</span></code> flag instead of <code class="docutils literal notranslate"><span class="pre">--verbose</span></code>, the body of email will instead be logged and the email will not be sent. In addition, the queries will not be saved to <code class="docutils literal notranslate"><span class="pre">elastalert_status</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="页脚导航">
+      
+        <a href="https://elastalert.readthedocs.io/en/latest/ruletypes.html" class="btn btn-neutral float-right" title="规则类型和配置选项" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://elastalert.readthedocs.io/en/latest/elastalert.html" class="btn btn-neutral float-left" title="ElastAlert-使用Elasticsearch轻松灵活地发出警报" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr><div><div id="rtd-qewut58c" class="ethical-rtd"></div></div>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2014, Yelp
+      
+        <span class="commit">
+          Revision <code>3affdd7e</code>.
+        </span>
+      
+
+    </p>
+  </div><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  使用</font></font><a href="http://sphinx-doc.org/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sphinx</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">使用</font><a href="https://readthedocs.org/"><font style="vertical-align: inherit;">Read the Docs</font></a><font style="vertical-align: inherit;">提供</font><font style="vertical-align: inherit;">的</font></font><a href="https://github.com/rtfd/sphinx_rtd_theme"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">主题</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">构建</font><font style="vertical-align: inherit;">。 
+
+</font></font><a href="https://readthedocs.org/"><font style="vertical-align: inherit;"></font></a><font style="vertical-align: inherit;"></font></footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="版本">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">阅读文档</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+      v：最新
+      </font></font><span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="https://elastalert.readthedocs.io/en/latest/running_elastalert.html">latest</a></dd>
+         </strong> 
+        
+        
+        <dd><a href="https://elastalert.readthedocs.io/en/stable/running_elastalert.html">stable</a></dd>
+        
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="https://readthedocs.org/projects/elastalert/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/elastalert/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="https://readthedocs.org/projects/elastalert/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="https://readthedocs.org/projects/elastalert/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/elastalert/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="https://readthedocs.org/projects/elastalert/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/Yelp/elastalert/blob/master/docs/source/running_elastalert.rst">View</a>
+        </dd>
+        
+        <dd>
+          <a href="https://github.com/Yelp/elastalert/edit/master/docs/source/running_elastalert.rst">Edit</a>
+        </dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/elastalert/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+        <small>
+          <span>Hosted by <a href="https://readthedocs.org/">Read the Docs</a></span>
+          <span> · </span>
+          <a href="https://docs.readthedocs.io/page/privacy-policy.html">Privacy Policy</a>
+        </small>
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+
+<div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./首次运行ElastAlert — ElastAlert 0.0.1文档_files/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><div id="rtd-6ui8pl1l"></div><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

@@ -1,0 +1,121 @@
+## mysql
+
+### 需要了解 mysql参数
+
+```shell
+mysql:
+version:数据库版本
+key_buffer_size:myisam的索引buffer大小
+sort_buffer_size:会话的排序空间（每个线程会申请一个）
+join_buffer_size:这是为链接操作分配的最小缓存大小，这些连接使用普通索引扫描、范围扫描、或者连接不适用索引
+max_connections:最大允许同时连接的数量
+max_connect_errors：允许一个主机最多的错误链接次数，如果超过了就会拒绝之后链接（默认100）。可以使用flush hosts命令去解除拒绝
+open_files_limits:操作系统允许mysql打开的文件数量，可以通过opened_tables状态确定是否需要增大table_open_cache,如果opened_tables比较大且一直还在增大说明需要增大table_open_cache
+max-heap_tables_size:建立的内存表的最大大小（默认16M）这个参数和tmp_table_size一起限制内部临时表的最大值(取这两个参数的小的一个），如果超过限制，则表会变为innodb或myisam引擎，（5.7.5之前是默认是myisam，5.7.6开始是innodb，可以通过internal_tmp_disk_storage_engine参数调整）。
+max_allowed_packet:一个包的最大大小
+
+
+
+
+# INNODB variables
+
+innodb_version:
+innodb_buffer_pool_instances：将innodb缓冲池分为指定的多个（默认为1）
+innodb_buffer_pool_size:innodb缓冲池大小、5.7.5引入了innodb_buffer_pool_chunk_size,
+innodb_doublewrite：是否开启doublewrite（默认开启）
+innodb_read_io_threads:IO读线程的数量
+innodb_write_io_threads:IO写线程的数量
+- innodb status
+
+innodb_buffer_pool_pages_total:innodb缓冲池页的数量、大小等于innodb_buffer_pool_size/(16*1024)
+innodb_buffer_pool_pages_data:innodb缓冲池中包含数据的页的数量
+
+- GET MYSQL HITRATE
+
+1、查询缓存命中率
+如果Qcache_hits+Com_select<>0则为 Qcache_hits/（Qcache_hits+Com_select），否则为0
+
+2、线程缓存命中率
+如果Connections<>0,则为1-Threads_created/Connections，否则为0
+
+3、myisam键缓存命中率
+如果Key_read_requests<>0,则为1-Key_reads/Key_read_requests，否则为0
+
+4、myisam键缓存写命中率
+如果Key_write_requests<>0,则为1-Key_writes/Key_write_requests，否则为0
+
+5、键块使用率
+如果Key_blocks_used+Key_blocks_unused<>0，则Key_blocks_used/（Key_blocks_used+Key_blocks_unused），否则为0
+
+6、创建磁盘存储的临时表比率
+如果Created_tmp_disk_tables+Created_tmp_tables<>0,则Created_tmp_disk_tables/（Created_tmp_disk_tables+Created_tmp_tables），否则为0
+
+7、连接使用率
+如果max_connections<>0，则threads_connected/max_connections，否则为0
+
+8、打开文件比率
+如果open_files_limit<>0，则open_files/open_files_limit，否则为0
+
+9、表缓存使用率
+如果table_open_cache<>0，则open_tables/table_open_cache，否则为0
+```
+
+### zabbix agent 配置mysql
+
+- 配置mysql登录密码
+
+vim /run/zabbix/.my.cnf
+
+[client]
+user=root
+password=password
+
+- 环境变量
+  HOME=/run/zabbix
+
+> mysqladmin及mysql 需要使用绝对路径
+
+vim /etc/zabbix/zabbix_agentd.d/userparameter_mysql.conf
+
+```shell
+UserParameter=mysql.ping[*],HOME=/run/zabbix /usr/local/mysql/bin/mysqladmin -h"$1" -P"$2" ping
+UserParameter=mysql.get_status_variables[*],HOME=/run/zabbix /usr/local/mysql/bin/mysql -h"$1" -P"$2" -sNX -e "show global status"
+UserParameter=mysql.version[*],HOME=/run/zabbix /usr/local/mysql/bin/mysqladmin -s -h"$1" -P"$2" version
+UserParameter=mysql.db.discovery[*],HOME=/run/zabbix /usr/local/mysql/bin/mysql -h"$1" -P"$2" -sN -e "show databases"
+UserParameter=mysql.dbsize[*],HOME=/run/zabbix /usr/local/mysql/bin/mysql -h"$1" -P"$2" -sN -e "SELECT SUM(DATA_LENGTH + INDEX_LENGTH) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='$3'"
+UserParameter=mysql.replication.discovery[*],HOME=/run/zabbix /usr/local/mysql/bin/mysql -h"$1" -P"$2" -sNX -e "show slave status"
+UserParameter=mysql.slave_status[*],HOME=/run/zabbix /usr/local/mysql/bin/mysql -h"$1" -P"$2" -sNX -e "show slave status"
+```
+
+**zabbix agent 配置更改后需要重启**
+
+- 测试验证
+
+需要在zabbix server进行测试
+
+```
+[root@zabbix-server ~]# zabbix_get -s 172.16.249.142 -p 10050 -k "mysql.ping["localhost","3306"]"
+mysqld is alive
+```
+
+### zabbix web 添加
+
+
+
+![img](图片\2.01.jpg)
+
+
+
+![img](图片\2.02.jpg)
+
+
+
+
+
+![img](图片\2.03.png)
+
+
+
+- mysql CUR
+
+  ![img](图片\2.04.jpg)
